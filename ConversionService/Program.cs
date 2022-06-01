@@ -11,12 +11,14 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+app.Logger.LogInformation("Off we go then");
+app.Logger.LogInformation("URL of arithmetic service {endpoint}", url);
 
 
 app.MapGet("/ctof", async (ILogger<object> logger, Calculator calculator, float temp) =>
 {
 	logger.LogInformation("GET /ctof using {endpoint}", url);
-	await calculator.AddAsync(await calculator.DivideAsync(await calculator.MultiplyAsync(temp, 9), 5), 32);
+	return await calculator.AddAsync(await calculator.DivideAsync(await calculator.MultiplyAsync(temp, 9), 5), 32);
 }).WithName("CtoF");
 
 app.MapGet("/ftoc", async (Calculator calculator, float temp) =>

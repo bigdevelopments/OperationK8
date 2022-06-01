@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: conversion-configmap
 data:
-  artihmetic_url: arithmetic-service	# the name of the service connecting to the arithmetic ''service''
+  artihmetic_url: http://arithmetic-service	# the name of the service becomes the DNS entry
