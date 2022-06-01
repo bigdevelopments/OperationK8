@@ -1,0 +1,13 @@
+
+1. Create an ASPNETCORE service (no authentication) which provides simple add/sub/mul/div GET operations on params p1 and p2. Results in JSON, Swagger enabled.
+2. Containerise it and host in Azure as a ContainerInstance.
+3. Create an ASPNETCORE service to do conversions. CtoF, FtoC, KGtoLBS, LBStoKG, KMtoMILES, MILEStoKM get methods
+4. Add a proxy to the arithmetic service
+5. Implement methods using the aritmetic service, configure endpoint as need be in environment variables.
+6. With arithmetic service in Azure, conversion service running, put both services in docker hub if not there already
+7. Get running on a local K8s cluster using some sort of ingress
+8. Get running on azure k8s cluster
+
+
+
+

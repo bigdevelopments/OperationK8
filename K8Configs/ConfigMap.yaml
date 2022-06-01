@@ -1,0 +1,6 @@
+﻿apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: conversion-configmap
+data:
+  artihmetic_url: arithmetic-service	# the name of the service connecting to the arithmetic ''service''

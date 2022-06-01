@@ -1,0 +1,43 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: conversion-deployment
+  labels:
+    app: conversion
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: conversion
+  template:
+    metadata:
+      labels:
+        app: conversion
+    spec:
+      containers:
+      - name: conversion
+        image: onetool/conversionservice
+        ports:
+        - containerPort: 80
+        env:
+        - name: ARITHMETIC_URL
+          valueFrom:
+            configMapKeyRef:
+              name: conversion-configmap
+              key: artihmetic_url
+            
+          
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: conversion-service
+spec:
+  selector:
+    app: conversion
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80              #service port
+      targetPort: 80        #container port
+      nodePort: 30000

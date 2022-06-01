@@ -1,0 +1,33 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arithmetic-deployment
+  labels:
+    app: arithmetic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: arithmetic
+  template:
+    metadata:
+      labels:
+        app: arithmetic
+    spec:
+      containers:
+      - name: arithmetic
+        image: onetool/arithmeticservice
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arithmetic-service
+spec:
+  selector:
+    app: arithmetic
+  ports:
+    - protocol: TCP
+      port: 80              #service port
+      targetPort: 80        #container port
